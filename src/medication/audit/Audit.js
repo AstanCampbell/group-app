@@ -7,6 +7,7 @@ class Audit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        audits:[],
         name: '',
         dayCount: '', 
         eveningCount: '', 
@@ -77,28 +78,38 @@ create(e) {
     return(
       <form onSubmit={this.handleSubmit}>
         <label className="input-group-text">Resident Name </label>
-        <input className="form-control form-control-lg" placeholder="enter resident name"
-        type ="text" name="name" onChange={this.inputChanged}
+        <input className="form-control form-control-lg" 
+        placeholder="enter resident name"
+        type ="text" name="name" 
+        onChange={(e) => this.inputedChange({ name: e.target.value })}
         value={this.state.firstName}/><br/>
 
         <label className="input-group-text">Day Count </label>
-        <input className="form-control form-control-lg" placeholder="enter medication intake"
-        type ="number" name="dayCount" onChange={this.inputChanged}
+        <input className="form-control form-control-lg" 
+        placeholder="enter medication intake"
+        type ="number" name="dayCount" 
+        onChange={(e) => this.inputChanged({ dayCount: e.target.value })}
         value={this.state.dayCount}/><br/>
 
         <label className="input-group-text">Evening Count </label>
-        <input className="form-control form-control-lg" placeholder="enter medication intake"
-        type ="number" name="eveningCount" onChange={this.inputChanged}
+        <input className="form-control form-control-lg" 
+        placeholder="enter medication intake"
+        type ="number" name="eveningCount" 
+        onChange={(e) => this.inputChanged({ eveningCount: e.target.value })}
         value={this.state.eveningCount}/><br/>
 
         <label className="input-group-text">Initial Medication Count </label>
-        <input className="form-control form-control-lg" placeholder="enter intial prescription count"
-        type ="number" name="initialMedicationCount" onChange={this.inputChanged}
+        <input className="form-control form-control-lg" 
+        placeholder="enter intial prescription count"
+        type ="number" name="initialMedicationCount"
+        onChange={(e) => this.inputChanged({ initialMedicationCount: e.target.value })}
         value={this.state.initialMedicationCount}/><br/>
 
         <label className="input-group-text">Staff Id </label>
-        <input className="form-control form-control-lg" placeholder="enter staff ID"
-        type ="text" name="staffId" onChange={this.inputChanged}
+        <input className="form-control form-control-lg" 
+        placeholder="enter staff ID"
+        type ="text" name="staffId" 
+        onChange={(e) => this.inputChanged({staffId: e.target.value })}
           value={this.state.staffId}/><br/>
 
         <input type="submit" value="Submit Audit"/>

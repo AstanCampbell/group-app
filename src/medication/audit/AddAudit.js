@@ -2,18 +2,19 @@
 import React, { Component, useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 
-class AuditPreview extends React.Component {
+class AddAudit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       audits: [],
-      name: '', 
-      dayCount: ''
+      name: '',
+        dayCount: '', 
+        eveningCount: '', 
+        staffId: '',
+        initialMedicationCount: ''
     };
 
     this.create = this.create.bind(this);
-    this.update = this.update.bind(this);
-    this.delete = this.delete.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 //   componentDidMount() {
@@ -45,7 +46,10 @@ class AuditPreview extends React.Component {
   },
   "body": JSON.stringify({
     name: this.state.name,
-    dayCount: this.state.dayCount
+    dayCount: this.state.dayCount,
+    eveningCount: this.state.eveningCount,
+    initialMedicationCount: this.state.initialMedicationCount,
+    staffId: this.state.staffId
   })
 })
 .then(response => response.json())
@@ -71,15 +75,15 @@ class AuditPreview extends React.Component {
   handleChange(changeObject) {
     this.setState(changeObject)
   }
-  
+
   render() {
     return (
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-8">
-              <h1 className="display-4 text-center">Make An API Call in React</h1>
+              <h1 className="display-4 text-center">Add Audit</h1>
               <form className="d-flex flex-column">
-                <legend className="text-center">Add-Update-Delete Friend</legend>
+                <legend className="text-center">Add-Update-Delete Audit</legend>
 
                 <label htmlFor="name">
                   Patient Name:
@@ -105,26 +109,40 @@ class AuditPreview extends React.Component {
                     required
                     />
                 </label>
-                <label htmlFor="id">
-                  Friend ID:
+                <label htmlFor="eveningCount">
+                  Evening Count:
                   <input
-                    name="id"
-                    id="id"
-                    type="text"
+                    name="eveningCount"
+                    id="eveningCount"
+                    type="number"
                     className="form-control"
-                    value={this.state.id}
-                    onChange={(e) => this.handleChange({ id: e.target.value })}
+                    value={this.state.eveningCount}
+                    onChange={(e) => this.handleChange({ eveningCount: e.target.value })}
                     />
                 </label>
-                <button className="btn btn-primary" type='button' onClick={(e) => this.create(e)}>
-                  Add
-                </button>
-                <button className="btn btn-info" type='button' onClick={(e) => this.update(e)}>
-                    Update
-                </button>
-                <button className="btn btn-danger" type='button' onClick={(e) => this.delete(e)}>
-                    Delete
-                </button>
+                <label htmlFor="initialMedicationCount">
+                  Initial Medication Count
+                  <input
+                    name="initialMedicationCount"
+                    id="initialMedicationCount"
+                    type="number"
+                    className="form-control"
+                    value={this.state.initialMedicationCount}
+                    onChange={(e) => this.handleChange({ initialMedicationCount: e.target.value })}
+                    />
+                </label>
+                <label htmlFor="staffId">
+                  StaffId
+                  <input
+                    name="staffId"
+                    id="staffId"
+                    type="numeric"
+                    className="form-control"
+                    value={this.state.staffId}
+                    onChange={(e) => this.handleChange({ staffId: e.target.value })}
+                    />
+                </label>
+                <input type="submit" value="Submit Audit" onClick={(e) => this.create(e)}/>
               </form>
             </div>
           </div>
@@ -135,4 +153,4 @@ class AuditPreview extends React.Component {
 // let domContainer = document.querySelector('#App');
 // ReactDOM.render(<AuditPreview />, domContainer);
 
-export default AuditPreview;
+export default AddAudit;
