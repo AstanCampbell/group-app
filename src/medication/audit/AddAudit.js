@@ -8,10 +8,10 @@ class AddAudit extends React.Component {
     this.state = {
       audits: [],
       name: '',
-        dayCount: '', 
-        eveningCount: '', 
-        staffId: '',
-        initialMedicationCount: ''
+      dayCount: '',
+      eveningCount: '',
+      staffId: '',
+      initialMedicationCount: ''
     };
 
     this.create = this.create.bind(this);
@@ -31,7 +31,7 @@ class AddAudit extends React.Component {
 //     audits: response
 //   })
 // })
-// .catch(err => { console.log(err); 
+// .catch(err => { console.log(err);
 // });
 
 //   }
@@ -60,15 +60,6 @@ class AddAudit extends React.Component {
   console.log(error);
 });
 
-    e.preventDefault();
-  }
-
-  update(e) {
-    // update entity - PUT
-    e.preventDefault();
-  }
-  delete(e) {
-    // delete entity - DELETE
     e.preventDefault();
   }
 
